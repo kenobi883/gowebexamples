@@ -1,10 +1,8 @@
-FROM golang:1.12-alpine
+FROM ubuntu:latest
 
-WORKDIR /go/src/app
+WORKDIR /app
+COPY templates layout.html ./
 
-COPY . .
+RUN chmod +x templates
 
-RUN go get -d -v
-RUN go install -v
-
-CMD ["app"]
+CMD ["/app/templates"]
